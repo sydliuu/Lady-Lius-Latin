@@ -1,0 +1,468 @@
+<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lady Liu's Latin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="easyScrollDots.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+  <h1 class = "mainTitle" data-scroll-indicator-title="Intro">Lady Liu's Latin</h1>
+  <h1 class= "mainSubHead">Scansion of Latin Dactylic Hexameter with Manual Adjustment</h1>
+
+  <nav id="dot-nav"></nav>
+
+
+  <section class="darkPurple" id="intro">
+    <h2>Project by Sydney Liu, Summer of 2020</h2>
+    <h3 class = "subhead">As a Latin student, I found scanning dactylic hexameter poetry to be tedious.</h3>
+    <p>Inspired, I decided to code a program that would do it for me, using the process that I normally did by hand. The result is this Java project that I coded in the summer after my sophomore year of high school, during the summer of the 2020 Covid pandemic.</p>
+    <p>In 2022, I coded this website in HTML + CSS.</p><br>
+    <a href="#purposeStatement">Already understand Latin dactylic hexameter? Click to skip.</a>
+  </section>
+
+  <section class= "brightPurple" id="huh" data-scroll-indicator-title="Understanding Dactylic Hexameter">
+    <h2>Understanding Dactylic Hexameter</h2>
+    <p class="statement">"Pterodactyl hexakilometer,<br>you say?"</p>
+    <p id="comment">...Close enough.</p>
+  </section>
+
+  <section class="pink" id = "dactHexInfo">
+    <h2>About Dactylic Hexameter</h2>
+    <p> <strong>Dactylic hexameter</strong> is a <a href="https://www.masterclass.com/articles/poetry-101-what-is-meter-learn-the-difference-between-qualitative-and-quantitative-meter-in-poetry-with-examples">poetic meter</a>, largely used in classical Latin or Greek epic poems such as Vergil's <em>Aeneid</em>.</p>
+    <p>A large part of scanning dactylic hexameter involves determining the "quantity" of each vowel sound in the line. Each vowel sound is marked as either long (-) or short (U) based on a set of specific rules.
+    <p>This is somewhat similar to scanning Shakespeare's <em>iambic pentameter</em>, in which syllables are marked stressed or unstressed. Note, however, that dactylic hexameter is a <em>quantitative meter</em> (based on syllable length) whereas iambic pentameter is a <em>qualitative meter</em> (based on syllable stress).</p></p>
+
+    <h3>Learn how to scan Latin dactylic hexameter</h3>
+    <p>N.B. Understanding the content in this video is CRUCIAL to understanding this program!</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cGF47JT0hPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </section>
+
+
+
+  <section class = "midBlue" id = "purposeStatement" data-scroll-indicator-title="Project Purpose">
+    <h2>Project Purpose</h2>
+    <p class ="statement">Scanning a line of Latin dactylic hexameter without access to a dictionary or datasets.</p>
+  </section>
+
+  <section class= "white", id="projPurpose">
+    <h2>The user inputs a line of Latin dactylic hexameter.<br>The program will scan it, using the following process...</h2>
+    <p><strong>The program first marks the quantities it can determine without using meter rules.</strong> This is the first pass of the line. The program decides what is considered vowel sounds. Then, it takes into account longs by position and longs by nature to mark vowel sounds as long (-) if possible. Vowel sounds that are elided or prodelided (silenced) are marked with ('). The remaining vowel sounds are left as unknown (?).</p>
+
+    <p><strong>Then, the program applies meter constraints to fill in the rest of the unknown quantities.</strong> It's basic constraint satisfaction. We certain quantities are long, based on step one. We also know that the line has to fulfill meter constraints: the line can only consist of dactyls (-UU) and spondees (- -), and there's six feet per line. We also know that the penultimate foot is commonly a dactyl. This is the second pass of the line. Building off the knowns in step one, then applying meter constraints, the program can fill in the rest of the unknown quantities rather accurately.</p>
+
+    <p><strong>While this method is quite effective, however, it is not 100% accurate</strong>... </p>
+      <ul>
+        <li>Sometimes, not enough information can be deduced based on vowel length rules and meter constraints alone. This is just the nature of the line, and the program is forced to guess. In that case, extra information can be manually provided. You can, for example, consult a dictionary to find out a vowel length based on vocabulary, change the unknown quantity (?) into long(—) or short(U), and the line will be rescanned with this new information.</li>
+        <li>The program may also make incorrect assumptions in step one... For example, if the poet intentionally chooses to disobey elision rules (<em>hiatus</em>), if 'i' is not treated as a vowel, but a consonant (it's like a 'j', e.g. "adiectus"), or if there's a word with adjacent vowels that look like a diphthong but isn't (e.g. in "deus", eu is not a diphthong). You can override the program's assumptions using the OVERRIDE and ADD/REMOVE functions discussed in INSTRUCTIONS.</li>
+        <li>See <a href="#pitfallsSec">Pitfalls</a> for more reasons why you may need to use manual adjustment.</li>
+      </ul>
+
+    <p><strong>...Which is why the program allows for manual adjustment.</strong> The manual adjustment feature gives users the abilities to override incorrect assumptions, to fill in where the program is forced to guess, and to account for exceptions. With the slight manual adjustment, the program will take in this new information and re-scan the line with this new information in mind.</p>
+
+  </section>
+
+  <section id = "outputGuide" class ="darkerBlue">
+    <h2>How to Use the Program</h2>
+    <p class ="statement">Output Guide</p>
+  </section>
+
+  <section class = "darkAqua"  id="vidInstruct" data-scroll-indicator-title="Video Walkthrough (Demo)">
+    <h2>Video Walkthrough (Demo)</h2>
+    <p>Here, I walk you through what my program does and how to use it.</p>
+    <p>This video assumes an understanding of how to scan dactylic hexameter, so if you're not familiar with doing so, please make sure to watch and understand the <a href="#dactHexInfo">Dactylic Hexameter video</a> linked above.</p>
+    <iframe id = "myVideo" width="100%" height="700px" src="https://www.youtube.com/embed/QDKHmHmHzuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </section>
+
+
+  <section class = "pink" id = "writInstruct" data-scroll-indicator-title="Written Guide & Instructions">
+    <h2>INSTRUCTIONS: Written Guide</h2>
+    <p><a href="#runStatement">Click to skip to project.</a></p>
+    <ol>
+      <li><h4 class = "step">Input a single line of Latin dactylic hexameter poetry.</h4></li>
+      <li>
+        <h4 class = "step">The program will produce outputs I, II, III, IV. </h4>
+        <p>For example, inputting the first line of the <em>Aeneid</em> results in this.</p>
+      </li>
+      <img id="outputSS" src = "LLL_screenshot.png" alt = "Program Outputs">
+      <li><h4 class = "step">For now, ONLY look at outputs I and II.</h4></li>
+      <p>Output I is the first pass of the line, and output II is the second pass.</p>
+      <table class = "table-output">
+        <thead>
+          <th scope="col" colspan= "2">Outputs I & II</th>
+        </thead>
+        <tr>
+          <th>Output I.</th>
+          <td>
+            <p class = "rowHead">I. Establishes Known Information Without Meter Constraints
+              <ul>
+                <li class = "liSpace">Establishes which characters are vowel sounds.</li>
+                <li class = "liSpace">Marks any vowel sounds as long by nature or by position if possible without a dictionary.</li>
+                <li class = "liSpace">Elided or prodelided vowel sounds are marked with (').</li>
+                <li class = "liSpace">If applicable, takes into account manual correction from previous scan (see Menu III. and Menu IV.)</li>
+              </ul>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th>Output II.</th>
+          <td>
+            <p class = "rowHead">II. Final Scanned Line: Meter Constraints Applied to Step I.</p>
+              <ul>
+                <li class = "liSpace">Using the information from output I, output II scans the rest of the line using meter rules: the line can only be comprised of dactyls (-UU) or spondees (--), with the exception of the last foot being long anceps (-X).</li>
+                <li class = "liSpace">Any known foot breaks are then established.</li>
+                <li class = "liSpace">Finally, the program reads from right to left between established foot breaks, trying to make a dactyl (-UU) each time but making a spondee (--) if the attempt fails. It does this right to left since the penultimate foot is usually a dactyl.</li>
+                <li class="liSpace"><em>It's more complicated than this: See my <a href="#reflections">Project Reflections & Problem Solving</a>.</em></li>
+              </ul>
+              <p class="emphasis">Output II is the program's best guess.<br>The goal of the program is to get this output's scansion to be correct!</p>
+
+          </td>
+        </tr>
+      </table>
+      <li><h4 class = "step" id="pitfallsSec">Ask yourself... Could the program be mistaken?</h4>
+        <p>Could the program's assumptions in outputs I be wrong? Are there too many unknowns in a row in output I, in which case output II is merely guessing? Let's review some common pitfalls of the program, and ways you can avoid this. The "fix" column refers to the manual adjustment features explained in step 5.</p>
+
+
+        <table id = "pitfalls">
+          <thead>
+            <th scope="col">Pitfalls</th>
+            <th scope="col">Possible Reasons</th>
+            <th scope="col">Fix</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Too Many Unknowns</th>
+              <td>Too many unknowns (?) in a row: the program is blind guessing in output II when applying meter constraints!<br>This is just the nature of the line. There's not enough information using long by position/nature alone, so it's just putting dactyls from right to left.</td>
+              <td>Using a dictionary or your own knowledge, assign one of the unknown quantities (?) as long or short using OVERRIDE, Reassign.</td>
+            </tr>
+            <tr>
+              <th>Wrong Quantity Assigned</th>
+              <td>
+                <p>Something gets assigned as long in output I, when it's not. This could happen for a number of reasons...</p>
+                <ul>
+                  <li>For example, the program marks an ending "o" as long, since that's often the case—but that isn't a hard and fast rule.</li>
+                </ul>
+              </td>
+              <td>Reassign the incorrect quantity using OVERRIDE, Reassign.</td>
+            </tr>
+            <tr>
+              <th>Mistakenly Assumed Diphthong</th>
+              <td>
+                <p>Any time the program recognizes any of these pairs ["ae", "oe", "ei", "ui", "au", "eu"], it will assume a diphthong. It'll mark them as one vowel sound only and mark it as long. However, this isn't always correct.</p>
+                <ul>
+                  <li>The diphthong "ui" happens very rarely. Words like "habui", therefore, would need to have its assumed diphthong broken.</li>
+                  <li>If there are 3 vowels in a row, and there is a macron over one of the vowels, it is not part of a diphthong. (e.g. diēī has 3 syllables, and no diphthongs even if it has "ei")</li>
+                  <li>There are also random cases like "deus", where "eu" is not a diphthong, etc.</li>
+                </ul>
+              </td>
+              <td>
+                Break the assumed diphthong using OVERRIDE, break diphthong.
+              </td>
+            </tr>
+            <tr>
+              <th>Hiatus</th>
+              <td>This happens due to poetic license: the poet intentionally choses not to obey elision rules. The program always assumes elision (marked with ') if applicable, so it'll get this wrong.</td>
+              <td>Unelide the elided quantity (') using OVERRIDE, Unelide.</td>
+            </tr>
+            <tr>
+              <th>Vowel Acts Like Consonant</th>
+              <td>Sometimes, vowels don't act like vowel sounds, so they shouldn't have a mark above them.
+                <ul>
+                  <li>"i"s sometimes act like consonants ("j") so you might need to remove "i" as a vowel sound (e.g. "adiectus").
+                    <ul>
+                      <li><em>My code tries to avoid this by not marking "i"s as vowel sounds when it's either between two consonants (e.g. "Troiae") or if the "i" is the first letter of a word and the second letter is a vowel (e.g. "iacta")</em>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>For example, the "u" in digraph "qu" is not a vowel sound; my code does account for this, however.</li>
+                </ul>
+              </td>
+              <td>Remove the non vowel sound using REMOVE.</td>
+            </tr>
+            <tr>
+              <th>Consonant Acts Like Vowel</th>
+              <td>For example, "u" versus "v", "y"s, or the "i" vs "j" situations can get tricky.</td>
+              <td>ADD the missing vowel sound using ADD.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>How is your line looking? Does it fall into any of these pitfalls?</h4>
+
+        <table>
+          <thead>
+            <th>Looking good!</th>
+            <th>Change needed.</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p class = "emphasis">The scanned line in output II is your final scanned line.</p>
+                <p>You're done! Ignore III, IV and the rest of instructions.<br>Input a new line to begin again.</p>
+              </td>
+              <td>Move onto <strong>manual adjustment</strong>, step 4.</td>
+
+            </tr>
+          </tbody>
+        </table>
+
+
+
+
+      <li>
+        <h4 class = "step">Manual Adjustment</h4>
+        <p>Uh-oh, you've realized that Output I and/or Output II don't look quite right. Let's take a look at outputs III and IV so we can either override assumptions about the quantities in step I or add new information.</p>
+
+
+        <table id="table-menu">
+          <thead>
+            <th scope="col" colspan= "2">Manual adjustment</th>
+          </thead>
+          <tr>
+            <th>Menu III.</th>
+            <td>
+              <p class = "rowHead">III. Making Changes To Already Identified Vowel Sounds
+                <ol>
+                  <li class = "liSpace">Input OVERRIDE.</li>
+                  <li class = "liSpace">Input the capital letter corresponding to the quantity that needs to be changed.</li>
+                  <li class = "liSpace">From there, you can pick one of the following options, if applicable...
+                    <ul>
+                      <li><strong>Reassign the quantity</strong> to a different one</li>
+                      <li><strong>Elide/Unelide</strong> the quantity</li>
+                      <li><strong>Break up an assumed diphthong</strong> into two separate vowel sounds</li>
+                    </ul>
+                  </li class = "liSpace">
+                  <li class = "liSpace">The line is then rescanned with this information. <strong>Return to step 2 of instructions.</strong></li>
+                </ol>
+              </p>
+          </tr>
+
+
+
+          <tr>
+            <th>Menu IV.</th>
+            <td>
+              <p class="rowHead">IV. Changing What Is Considered to Be a Vowel Sound</p>
+                <ul>
+                  <li class = "liSpace"><strong>To add a character as a vowel sound...</strong>
+                    <ol>
+                      <li >Input ADD.</li>
+                      <li>Then, input the lowercase letter corresponding to the character you'd like to turn into a vowel sound.</li>
+                      <li>The line is then rescanned with this information.</li>
+                    </ol>
+                  </li>
+                </ul>
+                <ul>
+                  <li class = "liSpace"><strong>To remove a character as a vowel sound...</strong>
+                    <ol>
+                      <li>Input REMOVE.</li>
+                      <li>Then, input the capital letter corresponding to the character you'd like to remove as a vowel sound.</li>
+                      <li>The line is then rescanned with this information. <strong>Return to step 2 of instructions.</strong></li>
+                    </ol>
+                  </li>
+                </ul>
+
+              </p>
+            </td>
+          </tr>
+        </table>
+      </li>
+    </ol>
+  </section>
+
+
+  <section id="runStatement" class= "darkerBlue" data-scroll-indicator-title="Run The Program">
+    <h2>Try it yourself.</h2>
+    <p class = "statement">Run the Program</h2>
+  </section>
+
+  <section class="darkAqua" id="run">
+    <h2>Press Play to Begin</h2>
+    <p class = "warning"><em><strong>IMPORTANT:</strong> Before inputting your line, wait momentarily until <strong>(Line to be scanned | QUIT):</strong> appears.</em></p>
+    <div id = "exampleLine">
+      <p>Need an example line?</p>
+      <ul>
+        <li>Some random ones... <a href ="https://www.thelatinlibrary.com/vergil/aen4.shtml"><em>Aeneid IV</em></a> or <a href="https://www.thelatinlibrary.com/ovid/ovid.met1.shtml"><em>Metamorphosis I</em></a></li>
+        <li>Any of Vergil's poetry (e.g. <em>Aeneid, Eclogues, Georgicon</em>) and anything from of Ovid's <em>Metamorphosis</em> should also work.</li>
+        <li>N.B. When picking a sample line, ensure that it does NOT already have characters with macrons on it!</li>
+      </ul>
+    </div>
+    <p>Reminder: <a href = "#pitfallsSec">Why you might need manual adjustment</a></p>
+
+    <iframe class = "replit" frameborder="0" width="100%" height="850px" src="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment?embed=true"></iframe>
+  </section>
+
+
+  <section class="darkestBlue">
+    <h2>Author's Note</h2>
+    <p class="statement">About me, project reflections, and some big thank-yous.</p>
+
+  </section>
+
+  <section data-scroll-indicator-title="About Me" class="midBlue" id = "aboutMe" >
+    <h2>About Me</h2>
+    <div class="imgText">
+      <img id="pfp" src="pfp.jpg" width=250px>
+        <div class ="text">
+          <h2>Hi, I'm Sydney Liu, a.k.a. Lady Liu.</h2>
+          <p>I'm currently a freshman at the University of Pennsylvania, looking to major in either <a href="http://cg.cis.upenn.edu/dmd.html">Digital Media Design</a> or computer science. I'm from Connecticut and attended Greenwich Academy.<br><br>I'm a huge nerd for all things art, English, and computer science!</p>
+          <a href="">Check out my personal website (Still in Progress) to see my latest projects and artwork.</a> 
+      </div>
+    </div>
+  </section>
+
+  <section data-scroll-indicator-title="Project Reflections & Problem Solving" class="white" id = "reflections">
+    <h2>Project Reflections & Problem Solving</h2>
+    <h3>Coming Up with the Idea</h3>
+
+    <p>I sat in my honors Latin II class, frustrated, as I scanned yet another line of Latin dactylic hexameter—a painfully slow process for me, who hadn't gotten the intuition for scansion yet. Surely, I thought, there's a way to automate this. I came up with this idea, and pitched it to my Latin teacher, Dr. Salazar, and my computer science teacher, Dr. Ortiz, and had a great time collaborating with professors from such different disciplines.</p>
+    <p>At this point, I had very bare-bones coding experience: all I had was AP computer science A. I coded this in Java, using the BlueJ IDE, which was what we had used in my class at the time. I learned a lot from making this project, on both programming and Latin ends, and I'm so glad I did.</p>
+
+
+    <h3>Program Logic</h3>
+    <p>I came up with the idea to make this scansion program on my own, but soon realized that somebody else already did something similar to what I had envisioned. My program originally followed <a href="http://www.logical.ai/arma/">this JavaScript site's logic</a> for the most part; I hadn't looked at the JS code, although I'd later look at the logic explanation.</p>
+
+    <p>Essentially, as previously explained, the program's first pass marks what it can as long without using meter rules (i.e., using long by position and long by nature). In the second pass, we apply meter constraints.  Starting from the back (right to left) since the penultimate foot is almost always a dactyl, the program looks at three quantities at a time. It repeatedly tries to make dactyls, but if the attempt fails (i.e. making a dactyl would contradict with one of the known quantities), it makes a spondee. Once a dactyl can no longer fit in the remaining space within the portion of the line (i.e. there are either two or four spaces left), it makes the rest of the unknown quantities in the portion as long, hence spondees.</p>
+    <ul>
+      <li>Let's first call the last three indexes within the line as a, b, and c respectively.</li>
+      <li>If abc can be made into a dactyl, i.e. if a is NOT short and b is NOT long and c is NOT long, then make abc a dactyl and reassign abc where c is to the left of where a was before.</li>
+        <ul><li>e.g. ...?????? = ...???abc →  ...???-UU → ...abc-UU</li></ul>
+      <li>If, however, either a is short, b is long, or c is short, then abc can't be a dactyl. Thus, make bc into a spondee, and reassign abc where c is where a was.</li>
+        <ul><li>e.g. ...????U?? = ...????abc → ...??abc--</li></ul>
+      <li>It does this process until it reaches the beginning of the line. It'll make a dactyl if it can, but if it can't, or not enough room is available for a dactyl, it makes a spondee.</li>
+        <ul><li>e.g. Two quantities left: ???-... = ?abc... → ??--... (only two ??)→ ----... </li></ul>
+        <ul><li>e.g. Four quantities left: ?abc... (can't make a dactyl, else left with one quantity) → ----...</li></ul>
+
+      <li>And this logic worked great... until I added my manual adjustment feature.</li>
+    </ul>
+
+
+    <h3>Adding the Manual Adjustment Feature</h3>
+    <p>I made my code from the JS one different, however, by creating the manual adjustment features (OVERRIDE/ADD/REMOVE functions) since I noticed that the JS program wasn't always so accurate. My program, therefore, unlike the JS one, allows the user to adjust the program assumptions and rescan the line, making my program far more robust. My code can thus account for unusual cases or artistic license, which is necessary for the flexible nature of language and poetry–for which it's hard to code strictly defined rules.</p>
+
+    <h3>Problem Solving</h3>
+    <p>I quickly realized, though, that my manual correction addition would force me to modify part of the JS logic. The JS site scans right to left like mine, attempting to make dactyls and making a spondee if it can't—but it does this with the whole line as opposed to finding any known foot breaks first and scanning in chunks. That's fine for the JS site since it's step I will only have longs because it only checks for long by position or nature. In my program, though, since OVERRIDE lets users assign quantities as short (U), I have to find the foot breaks first, or else the short quantity might not align properly, and would be forced into a spondee. Thus, I had to fill in "known by meter"s and find known foot breaks, then do the scanning in chunks.</p>
+
+    <h4>Finding "Known By Meters"</h4>
+    <p>If any of these conditions are met, the program will mark the quantities as follows... (underscore _ denotes any quantity, -/U/?)</p>
+    <ol>
+      <li>-_- → ---</li>
+      <li>-_U → -UU</li>
+      <li>-U_ → -UU</li>
+      <li>__U_U_ → -UU-UU</li>
+      <li>__U- → -UU</li>
+      <li>_UU → -UU</li>
+    </ol>
+    <p><em>If conditions 4, 5, or 6, it also checks if it triggers conditions 1 or 5, which end in a long, because 4/5/6 fill in a long on the left.</em></p>
+      <ul><li>e.g. -??UU (6)→ -?-UU (1)→ -_-UU</li></ul>
+    <p><strong>Why might "known by meters" be necessary with the manual adjustment addition?</strong></p>
+
+      <ul>
+        <li>For example, if the first pass has ?-U???​, the second pass should be ?-UU--.​</li>
+        <ul>
+          <li>With my earlier program, it would first become ?-U-UU since scanning right to left and checking the last three quantities (?-Uabc) would lead the program to believe that it can make abc, ???, into a dactyl.</li>
+          <li>When we have ?-U-UU, here, it would be (abc-UU) where abc=?-U is the next three quantities, which cannot be a dactyl... so it would force two of the quantities into a spondee, overwriting the U, giving us ?---UU​.</li>
+          <li>My code instead finds "known by meters" to fix this. I know that any instance of -U? must be -UU. So it goes to ?-UU??. From there, it starts the check three quantities process, where U?? is abc. Here, it can't be a dactyl, so ?? becomes a spondee, and we get ?-UU--.​​</li>
+        </ul>
+      <li><em>But this was not enough!!!​</em></li>
+    </ul>
+
+
+
+    <h4>Finding footbreaks, and scanning in chunks</h4>
+    <p>After filling in the knowns by meter, the program will find footbreaks.</p>
+    <ol>
+      <li>The program first marks a foot break at the very front of the line, and right before the long, anceps at the end (|-X).</li>
+      <li>It then determines foot breaks based on known dactyls, putting a foot break before and after each known dactyl, taking care not to repeat foot breaks.</li>
+        <ul><li>-UU → |-UU|</li></ul>
+      <li>Based on knowing the foot breaks from steps 1 and 2, it then can determine more foot breaks with the following conditions. </li>
+
+        <ol>
+          <li>|-- → |--|</li>
+          <li>|??U → |??U|</li>
+          <li>|?U? → |?U?|</li>
+        </ol>
+        <p><em>Note that we only care about marking foot breaks on the right! We don't need to worry about, for example,</em> ( --| → |--|). <em>The program already scans right to left, so it would be redundant to mark leading foot breaks. See step 4.</em></p>
+
+      <li>After the foot breaks are established, the program does process described in <strong>Program Logic</strong> is done in chunks between those foot breaks. For each chunk between foot breaks, the program works right to left, looking at three quantities at a time, and tries to make a dactyl, and makes a spondee if it fails.</li>
+    </ol>
+
+
+    <p><strong>Why might finding footbreaks be necessary with the manual adjustment addition?</strong></p>
+    <ul><li>Take, for example, |??U-???|, which should be -UU---- in pass two.​</li>
+      <ul>
+        <li>If I didn't find "known by meters" first, this would go to  ??U-abc → ?abc-UU → (can't make a dactyl, abc = ?U-) ?---UU.</li>
+        <li>But even now that my code finds the "known by meter" ??U-??? → -UU-???, but that isn't enough! ??U-??? → -UU--UU. Bad!!</li>
+        <li>Finding known foot breaks solves this problem. -UU-??? → |-UU|-???| → |-UU|----| ta-da!​​</li>
+      </ul>
+    </ul>
+  </section>
+
+  <section class="pink" id="programming" data-scroll-indicator-title="Programming">
+    <h2>Programming</h2>
+    <p>This program was coded in Java 8, in the BlueJ IDE. There are two classes: Main and DactHexLine. Main is my driver class that runs the user input. Each line that gets scanned is represented as a DactHexLine object. Every DactHexLine object has several parallel ArrayList instance variables, including ones that hold the indexes of the vowel sounds and another that holds their corresponding quantities. I represented quantities with numbers, where 1 = U, 2 = -, 3 = X and 5 = ?; I arbitrarily used 5 instead of 0 since I represented elided vowels with a negative so that eliding would be easily reversible (e.g. a long vowel that is elided is -2), and -0 would be the same as 0, which is problematic if I have an elided unknown quantity.</p>
+    <p>I learned a lot about making code for larger project and the logic process. I especially took with me the importance of psuedocode and documentation. My documentation, although definitely not perfect, helped me edit my code months after not looking at it. I also learned more about String manipulation and the StringBuilder class while trying to format the outputs. I took advantage of the monospace font in the Java console to "mark" vowel sounds!</p>
+
+    <h3>Website building</h3>
+    <p>Two years later, in 2022, I coded this website in HTML + CSS. This is actually my first website attempt! I just taught myself via Youtube and other free means this summer. It was a really great learning experience, and I also had a blast with the graphic design. It's also cool to npw be able to share my Latin project with people who have no idea what Latin dactylic hexameter is.</p>
+    <p>This was coded completely from scratch, except for the vertical dot navigation bar; for the nav bar, I implemented <a href="https://github.com/Superhands89/EasyScrollDots">this open source Github project.</a> The program is an <a href ="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment">embedded repl.it</a> since integrating a Java program into HTML is a big pain.</p>
+  </section>
+
+  <section class="darkAqua" id="credits" data-scroll-indicator-title="Credits">
+    <h2>Many Thanks</h2>
+    <p>To Dr. Salazar, my Latin teacher — Thanks for helping me to believe in myself (or rather, to believe in "Miss/Lady/Empress Liu"). Thank you for reading my incredibly long emails... You've helped so much with the Latin rules and this program simply wouldn't exist without you.</p>
+    <p>To Dr. Ortiz, my Computer Science teacher – Thank you for inspiring my love for computer science, and for making a girl feel like she can do anything!</p>
+
+    <h3>Latin Sources Used</h3>
+    <ul>
+      <li><a href="http://www.logical.ai/arma/">Parsing Latin poetry using constraint satisfaction</a> by Dylan Holmes</li>
+      <li><a href="https://www.youtube.com/watch?v=cGF47JT0hPA">Dactylic Hexameter - the Longs and Shorts of Latin Meter</a> video by Benjamin Johnson</li>
+      <li><em>Learn to Read Latin, second edition</em> textbook by Andrew Keller and Stephanie Russel</li>
+      <li><a href="https://www.thoughtco.com/scan-a-line-of-latin-poetry-118819">ThoughtCo. How to Scan and Mark Latin Poetry</a></li>
+      <li><a href="https://www.quia.com/files/quia/users/mcsueberry/Latin3b/Scansion_Rules">Scansion Rules</a> by Amy Barr</li>
+    </ul>
+
+    <h3>Code Credit</h3>
+    <ul>
+      <li><a href="https://github.com/Superhands89/EasyScrollDots">EasyScrollDots</a></li>
+    </ul>
+
+  </section>
+
+  <footer>
+
+  </footer>
+
+
+
+
+  <script type="text/javascript" src="easyScrollDots.min.js"></script>
+  <script>
+    easyScrollDots({
+      'fixedNav': false,
+      'fixedNavId': '',
+      'fixedNavUpward': false,
+      'offset': 0
+      });
+  </script>
+</body>
+</html>
