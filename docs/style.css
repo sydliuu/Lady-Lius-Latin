@@ -22,6 +22,11 @@ html {
   scroll-behavior: smooth;
 }
 
+p, li{
+  font-size: 18px;
+}
+
+
 .mainTitle{
   font-family: 'pacifico', 'lobster', 'cursive', sans-serif;
   font-size: 70px;
