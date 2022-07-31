@@ -3,9 +3,6 @@
   box-sizing: border-box;
 }
 
-
-
-
 body{
   font-family: 'Poppins', sans-serif, verdana;
   padding: 30px;
@@ -74,8 +71,8 @@ nav#dot-nav a.active, nav#dot-nav a:first-child {
 section{
   position: relative;
   top: 40px;
-  padding: 80px 150px;
-  margin: 0px 50px;
+  padding: 9% 10%;
+  margin: 0px 4%;
 }
 
 .darkPurple{
@@ -121,13 +118,31 @@ section{
   background-color: #01030d;
 }
 
+.vid-container{
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.vid-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
 #comment{
   text-align: right;
 }
 
 .statement{
   text-align: center;
-  padding: 100px 200px;
+  padding: 9% 14%;
   font-size: 32px;
 }
 
@@ -153,6 +168,8 @@ section{
   border-radius: 5px;
 }
 
+
+
 #writInstruct table{
   width: 100%;
 }
@@ -166,28 +183,30 @@ section{
 
 
 #writInstruct td{
-  padding: 30px;
+  padding: 2%;
   background-color: white;
 }
 
 
 .liSpace{
-  margin: 20px 0px;
+  margin: 2% 0px;
 }
 
 #writInstruct th{
   background-color: #181c63;
   color: white;
-  font-size: 20px;
-  padding: 40px;
+  font-size: 18px;
+  padding: 2%;
   text-align: center;
 }
 
 .rowHead{
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   font-weight: bold;
 }
+
+
 
 
 
@@ -195,11 +214,16 @@ section{
   font-weight: bold;
   text-align: center;
   color: orangered;
-  padding: 40px;
+  padding: 3%;
 }
 
 #pitfalls tbody th{
-  width: 10%;
+  width: 20%;
+}
+
+
+.passHeader{
+  width: 15%;
 }
 
 
@@ -223,24 +247,24 @@ section{
 
 #pfp{
   border-radius: 25%;
-  border: 10px solid white;
+  border: 5px solid white;
 }
 
 .imgText{
   display: flex;
   align-items:center;
-  padding: 0px 80px;
+  padding: 0px 5%;
 }
 
 .imgText .text{
-  padding: 80px;
+  padding: 5%;
 }
 
 
 
 footer{
   position: relative;
-  top: 40px;
-  padding: 80px 150px;
-  margin: 0px 50px;
+  margin-top: 5%;
+  background-color: #01030d;
+  padding: 3%;
 }
