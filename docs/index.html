@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>Lady Liu's Latin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -53,7 +54,9 @@
 
     <h3>Learn how to scan Latin dactylic hexameter</h3>
     <p>N.B. Understanding the content in this video is CRUCIAL to understanding this program!</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/cGF47JT0hPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="vid-container">
+      <iframe id="howtoscan-vid" src="https://www.youtube.com/embed/cGF47JT0hPA" title="How to Scan Latin Dactylic Hexameter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </section>
 
 
@@ -89,7 +92,9 @@
     <h2>Video Walkthrough (Demo)</h2>
     <p>Here, I walk you through what my program does and how to use it.</p>
     <p>This video assumes an understanding of how to scan dactylic hexameter, so if you're not familiar with doing so, please make sure to watch and understand the <a href="#dactHexInfo">Dactylic Hexameter video</a> linked above.</p>
-    <iframe id = "myVideo" width="100%" height="700px" src="https://www.youtube.com/embed/QDKHmHmHzuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="vid-container">
+      <iframe id = "myVideo" width="100%" height="700px" src="https://www.youtube.com/embed/QDKHmHmHzuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </section>
 
 
@@ -102,7 +107,7 @@
         <h4 class = "step">The program will produce outputs I, II, III, IV. </h4>
         <p>For example, inputting the first line of the <em>Aeneid</em> results in this.</p>
       </li>
-      <img id="outputSS" src = "LLL_screenshot.png" alt = "Program Outputs">
+      <img id="outputSS" src = "LLL_screenshot.png" alt = "Program Outputs" width = 100%>
       <li><h4 class = "step">For now, ONLY look at outputs I and II.</h4></li>
       <p>Output I is the first pass of the line, and output II is the second pass.</p>
       <table class = "table-output">
@@ -110,7 +115,7 @@
           <th scope="col" colspan= "2">Outputs I & II</th>
         </thead>
         <tr>
-          <th>Output I.</th>
+          <th class = "passHeader" >Pass I.</th>
           <td>
             <p class = "rowHead">I. Establishes Known Information Without Meter Constraints
               <ul>
@@ -124,7 +129,7 @@
         </tr>
 
         <tr>
-          <th>Output II.</th>
+          <th class="passHeader">Pass II.</th>
           <td>
             <p class = "rowHead">II. Final Scanned Line: Meter Constraints Applied to Step I.</p>
               <ul>
@@ -150,12 +155,12 @@
           </thead>
           <tbody>
             <tr>
-              <th>Too Many Unknowns</th>
+              <th >Too Many Unknowns</th>
               <td>Too many unknowns (?) in a row: the program is blind guessing in output II when applying meter constraints!<br>This is just the nature of the line. There's not enough information using long by position/nature alone, so it's just putting dactyls from right to left.</td>
               <td>Using a dictionary or your own knowledge, assign one of the unknown quantities (?) as long or short using OVERRIDE, Reassign.</td>
             </tr>
             <tr>
-              <th>Wrong Quantity Assigned</th>
+              <th >Wrong Quantity Assigned</th>
               <td>
                 <p>Something gets assigned as long in output I, when it's not. This could happen for a number of reasons...</p>
                 <ul>
@@ -165,7 +170,7 @@
               <td>Reassign the incorrect quantity using OVERRIDE, Reassign.</td>
             </tr>
             <tr>
-              <th>Mistakenly Assumed Diphthong</th>
+              <th >Mistakenly Assumed Diphthong</th>
               <td>
                 <p>Any time the program recognizes any of these pairs ["ae", "oe", "ei", "ui", "au", "eu"], it will assume a diphthong. It'll mark them as one vowel sound only and mark it as long. However, this isn't always correct.</p>
                 <ul>
@@ -179,7 +184,7 @@
               </td>
             </tr>
             <tr>
-              <th>Hiatus</th>
+              <th >Hiatus</th>
               <td>This happens due to poetic license: the poet intentionally choses not to obey elision rules. The program always assumes elision (marked with ') if applicable, so it'll get this wrong.</td>
               <td>Unelide the elided quantity (') using OVERRIDE, Unelide.</td>
             </tr>
@@ -199,7 +204,7 @@
               <td>Remove the non vowel sound using REMOVE.</td>
             </tr>
             <tr>
-              <th>Consonant Acts Like Vowel</th>
+              <th  >Consonant Acts Like Vowel</th>
               <td>For example, "u" versus "v", "y"s, or the "i" vs "j" situations can get tricky.</td>
               <td>ADD the missing vowel sound using ADD.</td>
             </tr>
@@ -298,6 +303,7 @@
   <section class="darkAqua" id="run">
     <h2>Press Play to Begin</h2>
     <p class = "warning"><em><strong>IMPORTANT:</strong> Before inputting your line, wait momentarily until <strong>(Line to be scanned | QUIT):</strong> appears.</em></p>
+    <p>NOT PHONE FRIENDLY... it requires horizontal space! Please use a computer.</p>
     <div id = "exampleLine">
       <p>Need an example line?</p>
       <ul>
@@ -308,7 +314,11 @@
     </div>
     <p>Reminder: <a href = "#pitfallsSec">Why you might need manual adjustment</a></p>
 
-    <iframe class = "replit" frameborder="0" width="100%" height="850px" src="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment?embed=true"></iframe>
+    <div class="repl-container">
+      <iframe class = "replit" frameborder="0" width="100%" height="850px" src="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment?embed=true"></iframe>
+    </div>
+
+    <a href="https://github.com/sydliuu/Lady-Lius-Latin">Github for Lady Liu's Latin </a>
   </section>
 
 
@@ -321,11 +331,11 @@
   <section data-scroll-indicator-title="About Me" class="midBlue" id = "aboutMe" >
     <h2>About Me</h2>
     <div class="imgText">
-      <img id="pfp" src="pfp.jpg" width=250px>
+      <img id="pfp" src="pfp.jpg" width=25%>
         <div class ="text">
           <h2>Hi, I'm Sydney Liu, a.k.a. Lady Liu.</h2>
           <p>I'm currently a freshman at the University of Pennsylvania, looking to major in either <a href="http://cg.cis.upenn.edu/dmd.html">Digital Media Design</a> or computer science. I'm from Connecticut and attended Greenwich Academy.<br><br>I'm a huge nerd for all things art, English, and computer science!</p>
-          <a href="">Check out my personal website (Still in Progress) to see my latest projects and artwork.</a> 
+          <a href="https://sydliuu.github.io/">Check out my personal website to see my latest projects and artwork.</a>
       </div>
     </div>
   </section>
@@ -423,7 +433,7 @@
     <p>I learned a lot about making code for larger project and the logic process. I especially took with me the importance of psuedocode and documentation. My documentation, although definitely not perfect, helped me edit my code months after not looking at it. I also learned more about String manipulation and the StringBuilder class while trying to format the outputs. I took advantage of the monospace font in the Java console to "mark" vowel sounds!</p>
 
     <h3>Website building</h3>
-    <p>Two years later, in 2022, I coded this website in HTML + CSS. This is actually my first website attempt! I just taught myself via Youtube and other free means this summer. It was a really great learning experience, and I also had a blast with the graphic design. It's also cool to npw be able to share my Latin project with people who have no idea what Latin dactylic hexameter is.</p>
+    <p>Two years later, in 2022, I coded this website in HTML + CSS. This is actually my first website attempt! I just taught myself via Youtube and other free means this summer. It was a really great learning experience, and I also had a blast with the graphic design. It's also cool to now be able to share my Latin project with people who have no idea what Latin dactylic hexameter is.</p>
     <p>This was coded completely from scratch, except for the vertical dot navigation bar; for the nav bar, I implemented <a href="https://github.com/Superhands89/EasyScrollDots">this open source Github project.</a> The program is an <a href ="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment">embedded repl.it</a> since integrating a Java program into HTML is a big pain.</p>
   </section>
 
@@ -449,7 +459,8 @@
   </section>
 
   <footer>
-
+    <p>Website coded with ♡ by Sydney Liu, 2022.</p>
+    <a href="https://sydliuu.github.io/">My Personal Website</a>
   </footer>
 
 
