@@ -145,71 +145,72 @@
       </table>
       <li><h4 class = "step" id="pitfallsSec">Ask yourself... Could the program be mistaken?</h4>
         <p>Could the program's assumptions in outputs I be wrong? Are there too many unknowns in a row in output I, in which case output II is merely guessing? Let's review some common pitfalls of the program, and ways you can avoid this. The "fix" column refers to the manual adjustment features explained in step 5.</p>
-
-
-        <table id = "pitfalls">
-          <thead>
-            <th scope="col">Pitfalls</th>
-            <th scope="col">Possible Reasons</th>
-            <th scope="col">Fix</th>
-          </thead>
-          <tbody>
-            <tr>
-              <th >Too Many Unknowns</th>
-              <td>Too many unknowns (?) in a row: the program is blind guessing in output II when applying meter constraints!<br>This is just the nature of the line. There's not enough information using long by position/nature alone, so it's just putting dactyls from right to left.</td>
-              <td>Using a dictionary or your own knowledge, assign one of the unknown quantities (?) as long or short using OVERRIDE, Reassign.</td>
-            </tr>
-            <tr>
-              <th >Wrong Quantity Assigned</th>
-              <td>
-                <p>Something gets assigned as long in output I, when it's not. This could happen for a number of reasons...</p>
-                <ul>
-                  <li>For example, the program marks an ending "o" as long, since that's often the case—but that isn't a hard and fast rule.</li>
-                </ul>
-              </td>
-              <td>Reassign the incorrect quantity using OVERRIDE, Reassign.</td>
-            </tr>
-            <tr>
-              <th >Mistakenly Assumed Diphthong</th>
-              <td>
-                <p>Any time the program recognizes any of these pairs ["ae", "oe", "ei", "ui", "au", "eu"], it will assume a diphthong. It'll mark them as one vowel sound only and mark it as long. However, this isn't always correct.</p>
-                <ul>
-                  <li>The diphthong "ui" happens very rarely. Words like "habui", therefore, would need to have its assumed diphthong broken.</li>
-                  <li>If there are 3 vowels in a row, and there is a macron over one of the vowels, it is not part of a diphthong. (e.g. diēī has 3 syllables, and no diphthongs even if it has "ei")</li>
-                  <li>There are also random cases like "deus", where "eu" is not a diphthong, etc.</li>
-                </ul>
-              </td>
-              <td>
-                Break the assumed diphthong using OVERRIDE, break diphthong.
-              </td>
-            </tr>
-            <tr>
-              <th >Hiatus</th>
-              <td>This happens due to poetic license: the poet intentionally choses not to obey elision rules. The program always assumes elision (marked with ') if applicable, so it'll get this wrong.</td>
-              <td>Unelide the elided quantity (') using OVERRIDE, Unelide.</td>
-            </tr>
-            <tr>
-              <th>Vowel Acts Like Consonant</th>
-              <td>Sometimes, vowels don't act like vowel sounds, so they shouldn't have a mark above them.
-                <ul>
-                  <li>"i"s sometimes act like consonants ("j") so you might need to remove "i" as a vowel sound (e.g. "adiectus").
-                    <ul>
-                      <li><em>My code tries to avoid this by not marking "i"s as vowel sounds when it's either between two consonants (e.g. "Troiae") or if the "i" is the first letter of a word and the second letter is a vowel (e.g. "iacta")</em>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>For example, the "u" in digraph "qu" is not a vowel sound; my code does account for this, however.</li>
-                </ul>
-              </td>
-              <td>Remove the non vowel sound using REMOVE.</td>
-            </tr>
-            <tr>
-              <th  >Consonant Acts Like Vowel</th>
-              <td>For example, "u" versus "v", "y"s, or the "i" vs "j" situations can get tricky.</td>
-              <td>ADD the missing vowel sound using ADD.</td>
-            </tr>
-          </tbody>
-        </table>
+      </li>
+        <div style="overflow-x:auto;">
+          <table id = "pitfalls">
+            <thead>
+              <th scope="col">Pitfalls</th>
+              <th scope="col">Possible Reasons</th>
+              <th scope="col">Fix</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th >Too Many Unknowns</th>
+                <td>Too many unknowns (?) in a row: the program is blind guessing in output II when applying meter constraints!<br>This is just the nature of the line. There's not enough information using long by position/nature alone, so it's just putting dactyls from right to left.</td>
+                <td>Using a dictionary or your own knowledge, assign one of the unknown quantities (?) as long or short using OVERRIDE, Reassign.</td>
+              </tr>
+              <tr>
+                <th >Wrong Quantity Assigned</th>
+                <td>
+                  <p>Something gets assigned as long in output I, when it's not. This could happen for a number of reasons...</p>
+                  <ul>
+                    <li>For example, the program marks an ending "o" as long, since that's often the case—but that isn't a hard and fast rule.</li>
+                  </ul>
+                </td>
+                <td>Reassign the incorrect quantity using OVERRIDE, Reassign.</td>
+              </tr>
+              <tr>
+                <th >Mistakenly Assumed Diphthong</th>
+                <td>
+                  <p>Any time the program recognizes any of these pairs ["ae", "oe", "ei", "ui", "au", "eu"], it will assume a diphthong. It'll mark them as one vowel sound only and mark it as long. However, this isn't always correct.</p>
+                  <ul>
+                    <li>The diphthong "ui" happens very rarely. Words like "habui", therefore, would need to have its assumed diphthong broken.</li>
+                    <li>If there are 3 vowels in a row, and there is a macron over one of the vowels, it is not part of a diphthong. (e.g. diēī has 3 syllables, and no diphthongs even if it has "ei")</li>
+                    <li>There are also random cases like "deus", where "eu" is not a diphthong, etc.</li>
+                  </ul>
+                </td>
+                <td>
+                  Break the assumed diphthong using OVERRIDE, break diphthong.
+                </td>
+              </tr>
+              <tr>
+                <th >Hiatus</th>
+                <td>This happens due to poetic license: the poet intentionally choses not to obey elision rules. The program always assumes elision (marked with ') if applicable, so it'll get this wrong.</td>
+                <td>Unelide the elided quantity (') using OVERRIDE, Unelide.</td>
+              </tr>
+              <tr>
+                <th>Vowel Acts Like Consonant</th>
+                <td>Sometimes, vowels don't act like vowel sounds, so they shouldn't have a mark above them.
+                  <ul>
+                    <li>"i"s sometimes act like consonants ("j") so you might need to remove "i" as a vowel sound (e.g. "adiectus").
+                      <ul>
+                        <li><em>My code tries to avoid this by not marking "i"s as vowel sounds when it's either between two consonants (e.g. "Troiae") or if the "i" is the first letter of a word and the second letter is a vowel (e.g. "iacta")</em>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>For example, the "u" in digraph "qu" is not a vowel sound; my code does account for this, however.</li>
+                  </ul>
+                </td>
+                <td>Remove the non vowel sound using REMOVE.</td>
+              </tr>
+              <tr>
+                <th  >Consonant Acts Like Vowel</th>
+                <td>For example, "u" versus "v", "y"s, or the "i" vs "j" situations can get tricky.</td>
+                <td>ADD the missing vowel sound using ADD.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <h4>How is your line looking? Does it fall into any of these pitfalls?</h4>
 
@@ -461,6 +462,7 @@
   <footer>
     <p>Website coded with ♡ by Sydney Liu, 2022.</p>
     <a href="https://sydliuu.github.io/">My Personal Website</a>
+
   </footer>
 
 
