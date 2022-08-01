@@ -235,10 +235,6 @@ section{
   font-size: 18px;
 }
 
-.replit{
-  width: max(100%, 500px);
-  height: 700px;
-}
 
 .authorsNote{
   margin-top: 30px;
