@@ -10,7 +10,10 @@ body{
   background-color: black;
   margin: 0;
   padding: 0;
+}
 
+p, li{
+  font-size: 18px;
 }
 
 a{
@@ -21,8 +24,6 @@ a{
 html {
   scroll-behavior: smooth;
 }
-
-
 
 .mainTitle{
   font-family: 'pacifico', 'lobster', 'cursive', sans-serif;
@@ -161,8 +162,9 @@ section{
 
 #outputSS{
   padding:0;
-  border: 10px solid #181c63;
+  border: 5px solid #181c63;
   border-radius: 5px
+  width: 100%;
 }
 
 #writInstruct table, th, td {
@@ -170,10 +172,8 @@ section{
   border-radius: 5px;
 }
 
-
-
 #writInstruct table{
-  width: 100%;
+  width: max(300px, 100%);
 }
 
 
@@ -185,22 +185,23 @@ section{
 
 
 #writInstruct td{
-  padding: 2%;
+  padding: 30px;
   background-color: white;
 }
 
 
 .liSpace{
-  margin: 2% 0px;
+  margin: 18px 0px;
 }
 
 #writInstruct th{
   background-color: #181c63;
   color: white;
-  font-size: 18px;
-  padding: 2%;
+  font-size: 20px;
+  padding: 20px;
   text-align: center;
 }
+
 
 .rowHead{
   font-size: 18px;
@@ -210,25 +211,16 @@ section{
 
 
 
-
-
 .emphasis{
   font-weight: bold;
   text-align: center;
   color: orangered;
-  padding: 3%;
+  padding: 40px;
 }
 
 #pitfalls tbody th{
-  width: 20%;
+  width: 5%;
 }
-
-
-.passHeader{
-  width: 15%;
-}
-
-
 
 
 #exampleLine {
@@ -241,6 +233,11 @@ section{
 .warning{
   text-align: center;
   font-size: 18px;
+}
+
+.replit{
+  width: max(100%, 500px);
+  height: 700px;
 }
 
 .authorsNote{
