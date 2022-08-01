@@ -107,46 +107,50 @@
         <h4 class = "step">The program will produce outputs I, II, III, IV. </h4>
         <p>For example, inputting the first line of the <em>Aeneid</em> results in this.</p>
       </li>
-      <img id="outputSS" src = "LLL_screenshot.png" alt = "Program Outputs" width = 100%>
+      <!-- <div style="overflow-x:auto;" class= "SS-imgWrapper"> -->
+        <img id="outputSS" src = "LLL_screenshot.png" alt = "Program Outputs" width="100%">
+      <!-- </div> -->
       <li><h4 class = "step">For now, ONLY look at outputs I and II.</h4></li>
       <p>Output I is the first pass of the line, and output II is the second pass.</p>
-      <table class = "table-output">
-        <thead>
-          <th scope="col" colspan= "2">Outputs I & II</th>
-        </thead>
-        <tr>
-          <th class = "passHeader" >Pass I.</th>
-          <td>
-            <p class = "rowHead">I. Establishes Known Information Without Meter Constraints
-              <ul>
-                <li class = "liSpace">Establishes which characters are vowel sounds.</li>
-                <li class = "liSpace">Marks any vowel sounds as long by nature or by position if possible without a dictionary.</li>
-                <li class = "liSpace">Elided or prodelided vowel sounds are marked with (').</li>
-                <li class = "liSpace">If applicable, takes into account manual correction from previous scan (see Menu III. and Menu IV.)</li>
-              </ul>
-            </p>
-          </td>
-        </tr>
+      <div style="overflow-x:auto;">
+        <table class = "table-output">
+          <thead>
+            <th scope="col" colspan= "2">Outputs I & II</th>
+          </thead>
+          <tr>
+            <th class = "passHeader" >Pass I.</th>
+            <td>
+              <p class = "rowHead">I. Establishes Known Information Without Meter Constraints
+                <ul>
+                  <li class = "liSpace">Establishes which characters are vowel sounds.</li>
+                  <li class = "liSpace">Marks any vowel sounds as long by nature or by position if possible without a dictionary.</li>
+                  <li class = "liSpace">Elided or prodelided vowel sounds are marked with (').</li>
+                  <li class = "liSpace">If applicable, takes into account manual correction from previous scan (see Menu III. and Menu IV.)</li>
+                </ul>
+              </p>
+            </td>
+          </tr>
 
-        <tr>
-          <th class="passHeader">Pass II.</th>
-          <td>
-            <p class = "rowHead">II. Final Scanned Line: Meter Constraints Applied to Step I.</p>
-              <ul>
-                <li class = "liSpace">Using the information from output I, output II scans the rest of the line using meter rules: the line can only be comprised of dactyls (-UU) or spondees (--), with the exception of the last foot being long anceps (-X).</li>
-                <li class = "liSpace">Any known foot breaks are then established.</li>
-                <li class = "liSpace">Finally, the program reads from right to left between established foot breaks, trying to make a dactyl (-UU) each time but making a spondee (--) if the attempt fails. It does this right to left since the penultimate foot is usually a dactyl.</li>
-                <li class="liSpace"><em>It's more complicated than this: See my <a href="#reflections">Project Reflections & Problem Solving</a>.</em></li>
-              </ul>
-              <p class="emphasis">Output II is the program's best guess.<br>The goal of the program is to get this output's scansion to be correct!</p>
+          <tr>
+            <th class="passHeader">Pass II.</th>
+            <td>
+              <p class = "rowHead">II. Final Scanned Line: Meter Constraints Applied to Step I.</p>
+                <ul>
+                  <li class = "liSpace">Using the information from output I, output II scans the rest of the line using meter rules: the line can only be comprised of dactyls (-UU) or spondees (--), with the exception of the last foot being long anceps (-X).</li>
+                  <li class = "liSpace">Any known foot breaks are then established.</li>
+                  <li class = "liSpace">Finally, the program reads from right to left between established foot breaks, trying to make a dactyl (-UU) each time but making a spondee (--) if the attempt fails. It does this right to left since the penultimate foot is usually a dactyl.</li>
+                  <li class="liSpace"><em>It's more complicated than this: See my <a href="#reflections">Project Reflections & Problem Solving</a>.</em></li>
+                </ul>
+                <p class="emphasis">Output II is the program's best guess.<br>The goal of the program is to get this output's scansion to be correct!</p>
 
-          </td>
-        </tr>
-      </table>
+            </td>
+          </tr>
+        </table>
+      </div>
       <li><h4 class = "step" id="pitfallsSec">Ask yourself... Could the program be mistaken?</h4>
         <p>Could the program's assumptions in outputs I be wrong? Are there too many unknowns in a row in output I, in which case output II is merely guessing? Let's review some common pitfalls of the program, and ways you can avoid this. The "fix" column refers to the manual adjustment features explained in step 5.</p>
       </li>
-        <div style="overflow-x:auto;">
+        <div class="table-wrapper" style="overflow-x:auto;">
           <table id = "pitfalls">
             <thead>
               <th scope="col">Pitfalls</th>
@@ -213,23 +217,24 @@
         </div>
 
         <h4>How is your line looking? Does it fall into any of these pitfalls?</h4>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <th>Looking good!</th>
+              <th>Change needed.</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p class = "emphasis">The scanned line in output II is your final scanned line.</p>
+                  <p>You're done! Ignore III, IV and the rest of instructions.<br>Input a new line to begin again.</p>
+                </td>
+                <td>Move onto <strong>manual adjustment</strong>, step 4.</td>
 
-        <table>
-          <thead>
-            <th>Looking good!</th>
-            <th>Change needed.</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <p class = "emphasis">The scanned line in output II is your final scanned line.</p>
-                <p>You're done! Ignore III, IV and the rest of instructions.<br>Input a new line to begin again.</p>
-              </td>
-              <td>Move onto <strong>manual adjustment</strong>, step 4.</td>
-
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
 
 
@@ -237,61 +242,60 @@
       <li>
         <h4 class = "step">Manual Adjustment</h4>
         <p>Uh-oh, you've realized that Output I and/or Output II don't look quite right. Let's take a look at outputs III and IV so we can either override assumptions about the quantities in step I or add new information.</p>
-
-
-        <table id="table-menu">
-          <thead>
-            <th scope="col" colspan= "2">Manual adjustment</th>
-          </thead>
-          <tr>
-            <th>Menu III.</th>
-            <td>
-              <p class = "rowHead">III. Making Changes To Already Identified Vowel Sounds
-                <ol>
-                  <li class = "liSpace">Input OVERRIDE.</li>
-                  <li class = "liSpace">Input the capital letter corresponding to the quantity that needs to be changed.</li>
-                  <li class = "liSpace">From there, you can pick one of the following options, if applicable...
-                    <ul>
-                      <li><strong>Reassign the quantity</strong> to a different one</li>
-                      <li><strong>Elide/Unelide</strong> the quantity</li>
-                      <li><strong>Break up an assumed diphthong</strong> into two separate vowel sounds</li>
-                    </ul>
-                  </li class = "liSpace">
-                  <li class = "liSpace">The line is then rescanned with this information. <strong>Return to step 2 of instructions.</strong></li>
-                </ol>
-              </p>
-          </tr>
-
-
-
-          <tr>
-            <th>Menu IV.</th>
-            <td>
-              <p class="rowHead">IV. Changing What Is Considered to Be a Vowel Sound</p>
-                <ul>
-                  <li class = "liSpace"><strong>To add a character as a vowel sound...</strong>
-                    <ol>
-                      <li >Input ADD.</li>
-                      <li>Then, input the lowercase letter corresponding to the character you'd like to turn into a vowel sound.</li>
-                      <li>The line is then rescanned with this information.</li>
-                    </ol>
-                  </li>
-                </ul>
-                <ul>
-                  <li class = "liSpace"><strong>To remove a character as a vowel sound...</strong>
-                    <ol>
-                      <li>Input REMOVE.</li>
-                      <li>Then, input the capital letter corresponding to the character you'd like to remove as a vowel sound.</li>
-                      <li>The line is then rescanned with this information. <strong>Return to step 2 of instructions.</strong></li>
-                    </ol>
-                  </li>
-                </ul>
-
-              </p>
-            </td>
-          </tr>
-        </table>
       </li>
+      <div style="overflow-x:auto;">
+          <table id="table-menu">
+            <thead>
+              <th scope="col" colspan= "2">Manual adjustment</th>
+            </thead>
+            <tr>
+              <th>Menu III.</th>
+              <td>
+                <p class = "rowHead">III. Making Changes To Already Identified Vowel Sounds
+                  <ol>
+                    <li class = "liSpace">Input OVERRIDE.</li>
+                    <li class = "liSpace">Input the capital letter corresponding to the quantity that needs to be changed.</li>
+                    <li class = "liSpace">From there, you can pick one of the following options, if applicable...
+                      <ul>
+                        <li><strong>Reassign the quantity</strong> to a different one</li>
+                        <li><strong>Elide/Unelide</strong> the quantity</li>
+                        <li><strong>Break up an assumed diphthong</strong> into two separate vowel sounds</li>
+                      </ul>
+                    </li class = "liSpace">
+                    <li class = "liSpace">The line is then rescanned with this information. <strong>Return to step 2 of instructions.</strong></li>
+                  </ol>
+                </p>
+            </tr>
+
+            <tr>
+              <th>Menu IV.</th>
+              <td>
+                <p class="rowHead">IV. Changing What Is Considered to Be a Vowel Sound</p>
+                  <ul>
+                    <li class = "liSpace"><strong>To add a character as a vowel sound...</strong>
+                      <ol>
+                        <li >Input ADD.</li>
+                        <li>Then, input the lowercase letter corresponding to the character you'd like to turn into a vowel sound.</li>
+                        <li>The line is then rescanned with this information.</li>
+                      </ol>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li class = "liSpace"><strong>To remove a character as a vowel sound...</strong>
+                      <ol>
+                        <li>Input REMOVE.</li>
+                        <li>Then, input the capital letter corresponding to the character you'd like to remove as a vowel sound.</li>
+                        <li>The line is then rescanned with this information. <strong>Return to step 2 of instructions.</strong></li>
+                      </ol>
+                    </li>
+                  </ul>
+
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+
     </ol>
   </section>
 
@@ -315,8 +319,8 @@
     </div>
     <p>Reminder: <a href = "#pitfallsSec">Why you might need manual adjustment</a></p>
 
-    <div class="repl-container">
-      <iframe class = "replit" frameborder="0" width="100%" height="850px" src="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment?embed=true"></iframe>
+    <div style="overflow-x: auto;" class="repl-container">
+      <iframe class = "replit" frameborder="0" src="https://replit.com/@SydneyLiu/Scansion-of-Latin-Dactylic-Hexameter-with-Manual-Adjustment?embed=true"></iframe>
     </div>
 
     <a href="https://github.com/sydliuu/Lady-Lius-Latin">Github for Lady Liu's Latin </a>
