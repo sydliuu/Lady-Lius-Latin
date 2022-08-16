@@ -258,6 +258,10 @@ section{
   padding: 0px 5%;
 }
 
+#pfp{
+  width: 25%;
+}
+
 @media (max-width: 1000px) {
   .flex-container {
     flex-direction: column;
