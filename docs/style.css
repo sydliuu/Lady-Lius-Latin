@@ -274,15 +274,9 @@ section{
 .imgText .text{
   padding: 5%;
 }
-
-.repl-container{
-  width: 100%;
-}
-
 .replit{
-  width: max(100%, 500px);
+  width: 100%;
   height: 850px;
-  overflow: scroll;
 }
 
 
