@@ -277,12 +277,14 @@ section{
 
 .repl-container{
   width: 100%;
+  overflow: scroll;
   height: 850px;
 }
 
 .replit{
   width: max(100%, 500px);
   height: 850px;
+  overflow: scroll;
 }
 
 
