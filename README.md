@@ -1,7 +1,7 @@
 # Lady-Lius-Latin
 Scansion of Latin Dactylic Hexameter with Manual Adjustment
 
-Program Explanation: https://sydliuu.github.io/Lady-Lius-Latin/
+Website with Explanation: https://sydliuu.github.io/Lady-Lius-Latin/
 
 A Java program that scans Latin dactylic hexameter poetry, and a website coded from HTML + CSS explaining how it works. 
 
