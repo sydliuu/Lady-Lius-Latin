@@ -269,6 +269,7 @@ section{
   #pfp{
     width: 60%;
   }
+  
 }
 
 .imgText .text{
@@ -277,6 +278,12 @@ section{
 .replit{
   width: 100%;
   height: 850px;
+}
+
+@media (max-width: 1000px) {
+  width: 500px;
+  height: 800px;
+  overflow: scroll;
 }
 
 
