@@ -275,6 +275,16 @@ section{
   padding: 5%;
 }
 
+.repl-container{
+  width: 100%;
+  height: fit-content;
+}
+
+.replit{
+  width: max(100%, 500px);
+  height: 850px;
+}
+
 
 footer{
   position: relative;
