@@ -107,8 +107,35 @@
         <h4 class = "step">The program will produce outputs I, II, III, IV. </h4>
         <p>For example, inputting the first line of the <em>Aeneid</em> results in this.</p>
       </li>
-      <!-- <div style="overflow-x:auto;" class= "SS-imgWrapper"> -->
-        <img id="outputSS" src = "LLL_screenshot.png" alt = "Program Outputs" width="100%">
+      <div id="scansion">
+          <div class="scansion-text">
+              PREVIEW: EXAMPLE SCAN<br>May need horizontal scroll to view<br><br>
+              (Line to be scanned | QUIT): Arma virumque cano, Troiae qui primus ab oris<br>
+                  I. Knowns without meter. Long by position; diphthongs assumed; no hiatus assumed; final 'o' assumed to be long (unless overridden): <br>
+                  <pre>   —  ?  ? —   ?  ? —    ? ——   ?   ? ?  ?  ? ?</pre>
+                  <pre>   Arma virumque cano, Troiae qui primus ab oris</pre>
+                  II. Guess by working backwards with meter constraints:<br>
+                  &emsp;•If it's clearly wrong, try overriding or adding/removing vowel sounds!
+             
+                  <pre>   —  U  U —   U  U —    — ——   —   — U  U  — X</pre>
+                  <pre>   Arma virumque cano, Troiae qui primus ab oris</pre>
+                  <br>
+                  III. OVERRIDE—unelide, break a diphthong, or reassign a quantity:<br>
+                  &emsp;•Number of syllables calculated: 15 (Meter rules: [12, 17])<br>
+
+                  <pre>   A  B  C D   E  F G    H I    J   K L  M  N O</pre>
+                  <pre>   —  ?  ? —   ?  ? —    ? ——   ?   ? ?  ?  ? ?</pre>
+                  <pre>   Arma virumque cano, Troiae qui primus ab oris</pre>
+
+                  IV. ADD (lowercase) or REMOVE (uppercase) vowel sounds:<br>
+                  &emsp;•Number of syllables calculated: 15 (Meter rules: [12, 17])<br>
+                  <pre>   A  B  C D  aE  F G    HbI   cJ   K L  M  N O</pre>
+                  <pre>   —  ?  ? —   ?  ? —    ? ——   ?   ? ?  ?  ? ?</pre>
+                  <pre>   Arma virumque cano, Troiae qui primus ab oris</pre><br>
+
+                  (OVERRIDE/REMOVE/ADD | Line to be scanned | QUIT): [Just a preview - click <a href="#run">link</a> to try]
+          </div>    
+      </div>
       <!-- </div> -->
       <li><h4 class = "step">For now, ONLY look at outputs I and II.</h4></li>
       <p>Output I is the first pass of the line, and output II is the second pass.</p>
@@ -335,7 +362,7 @@
 
   <section data-scroll-indicator-title="About Me" class="midBlue" id = "aboutMe" >
     <h2>About Me</h2>
-    <div class="imgText">
+    <div class="imgText flex-container">
       <img id="pfp" src="pfp.jpg" width=25%>
         <div class ="text">
           <h2>Hi, I'm Sydney Liu, a.k.a. Lady Liu.</h2>
