@@ -277,8 +277,6 @@ section{
 
 .repl-container{
   width: 100%;
-  overflow: scroll;
-  height: 850px;
 }
 
 .replit{
