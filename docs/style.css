@@ -159,12 +159,18 @@ section{
 }
 
 
+#scansion{
+  margin-top: 5%;
+  font-family: monospace;
+  font-size: 1rem;
+  background-color: rgb(29, 30, 40);
+  color: white;
+  padding: 2%;
+}
 
-#outputSS{
-  padding:0;
-  border: 5px solid #181c63;
-  border-radius: 5px
-  width: 100%;
+.scansion-text{
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 
 #writInstruct table, th, td {
@@ -242,19 +248,28 @@ section{
 
 #pfp{
   border-radius: 25%;
-  border: 5px solid white;
+  border: 10px solid white;
 }
 
-.imgText{
+
+.flex-container{
   display: flex;
   align-items:center;
   padding: 0px 5%;
 }
 
+@media (max-width: 1000px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  #pfp{
+    width: 60%;
+  }
+}
+
 .imgText .text{
   padding: 5%;
 }
-
 
 
 footer{
