@@ -276,12 +276,19 @@ section{
   padding: 5%;
 }
 
+.replit{
+  width: 100%;
+}
 
 @media (max-width: 1000px) {
-  width: 500px;
-  height: 800px;
-  overflow: scroll;
+  .replit{
+    width: 500px;
+    height: 800px;
+    overflow: scroll;
+  }
 }
+
+
 
 
 footer{
